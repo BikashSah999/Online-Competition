@@ -1,0 +1,38 @@
+{% extends 'dashboard/base.html' %}
+{% block title %} Category {% endblock %}
+{% block body %}
+<h1>Category</h1>
+<form method='post'>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Category Name" name="category" required>
+    </div>
+    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+</form>
+
+<div class="table-responsive">
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Creator Name</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cat in all_cat %}
+        <tr>
+        <th scope="row"> {{cat.id}} </th>
+        <td>{{cat.category}}</td>
+        <td>{{cat.added_by}}</td>
+        <td><a href="/dashboard/delete/category/{{cat.id}}"> Delete </a></td>
+        </tr>
+        {% endfor %}
+    </tbody>           
+    </table>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{% block title %} {% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {% load static %}
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'competition_app/fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'competition_app/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'competition_app/css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'competition_app/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'competition_app/css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'competition_app/css/owl.theme.default.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'competition_app/css/jquery.fancybox.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'competition_app/css/bootstrap-datepicker.css' %}">
+
+  <link rel="stylesheet" href="{% static 'competition_app/fonts/flaticon/font/flaticon.css' %}">
+
+  <link rel="stylesheet" href="{% static 'competition_app/css/aos.css'">
+  <link href="{% static 'competition_app/css/jquery.mb.YTPlayer.min.css' %}" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="{% static 'competition_app/css/style.css' %}">
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">21 M</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}"><span class="fas fa-home"></span>&nbsp;Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="fas fa-th-list"></span>&nbsp;Category
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'home' %}">Technology</a>
+                <a class="dropdown-item" href="{% url 'home' %}">Entertainment</a>
+                <a class="dropdown-item" href="{% url 'home' %}">Politics</a>
+                <a class="dropdown-item" href="{% url 'home' %}">Sports</a>
+                <a class="dropdown-item" href="{% url 'home' %}">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}"><span class="fas fa-circle"></span>&nbsp;About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}"><span class="fas fa-envelope"></span>&nbsp;Contact</a>
+            </li>
+          </ul>
+          {% if not user.is_authenticated %}
+          <div class="form-inline">
+            <a class="nav-link" href="{% url 'signup' %}"><span class="fas fa-circle"></span>&nbsp;Sign Up</a>
+            <a class="nav-link" href="{% url 'login' %}"><span class="fas fa-circle"></span>&nbsp;Log In</a>
+          </div>
+          {% else %}
+          <div class="form-inline">
+            Hello {{user.username}}
+            <a class="nav-link" href="{% url 'logout' %}"><span class="fas fa-circle"></span>&nbsp;Log Out</a>
+          </div>
+          {% endif %}
+          <form class="search-form d-inline-block">
+            <div class="d-flex">
+              <input type="text" class="form-control" placeholder="Search..." name='query'>
+              <button type="submit" class="btn btn-secondary" ><span class="icon-search"></span></button>
+            </div>
+          </form>
+        </div>
+      </nav>
+    {% if messages %}
+    {% for message in messages %}
+    <h6>{{message}}</h6>
+    {% endfor %}
+    {% endif %}
+
+    {% block body %} {% endblock %}
+
+    <div class="site-section subscribe bg-light">
+        <div class="container">
+          <form action="#" class="row align-items-center">
+            <div class="col-md-5 mr-auto">
+              <h2>Newsletter Subcribe</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis aspernatur ut at quae omnis pariatur obcaecati possimus nisi ea iste!</p>
+            </div>
+            <div class="col-md-6 ml-auto">
+              <div class="d-flex">
+                <input type="email" class="form-control" placeholder="Enter your email">
+                <button type="submit" class="btn btn-secondary" ><span class="icon-paper-plane"></span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+  
+      
+      <div class="footer">
+        <div class="container">
+          
+  
+          <div class="row">
+            <div class="col-12">
+              <div class="copyright">
+                  <p>
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  
+    </div>
+    <!-- .site-wrap -->
+  
+  
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+  
+    <script src="{% static 'competition_app/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'competition_app/js/popper.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'competition_app/js/aos.js' %}"></script>
+    <script src="{% static 'competition_app/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'competition_app/js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'competition_app/js/jquery.mb.YTPlayer.min.js' %}"></script>
+  
+  
+  
+  
+    <script src="{% static 'competition_app/js/main.js' %}"></script>
+  
+  </body>
+  
+  </html>

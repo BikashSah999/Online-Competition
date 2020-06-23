@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    {% load static %}
+    <title> {% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'home' %}">21M</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    Welcome
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <h1> Dashboard </h1>
+                <ul class="nav nav-pills flex-column">
+                    {% if request.path == '/dashboard/' %}
+                    <li class="nav-item">
+                        <a class="nav-link active admin" href="{% url 'dashboardhome' %}"><span
+                                class="fas fa-th"></span>&nbsp;Active Contests</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link admin" href="{% url 'dashboardhome' %}"><span
+                                class="fas fa-list-alt"></span>&nbsp;Active Contests</a>
+                    </li>
+                    {% endif %}
+                    {% if request.path == '/dashbaord/inactive/' %}
+                    <li class="nav-item">
+                        <a class="nav-link active admin" href="{% url 'dashboardinactive' %}"><span
+                                class="fas fa-list-alt"></span>&nbsp;Inactive Contests</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link admin" href="{% url 'dashboardinactive' %}"><span
+                                class="fas fa-list-alt"></span>&nbsp;Inactive Contests</a>
+                    </li>
+                    {% endif %}
+                    {% if request.path == '/dashboard/category/' %}
+                    <li class="nav-item">
+                        <a class="nav-link active admin" href="{% url 'dashboardcategory' %}"><span
+                                class="fas fa-tags"></span>&nbsp;Categories</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link admin" href="{% url 'dashboardcategory' %}"><span
+                                class="fas fa-tags"></span>&nbsp;Categories</a>
+                    </li>
+                    {% endif %}
+                    {% if request.path == '/dashboard/addcompetition/' %}
+                    <li class="nav-item">
+                        <a class="nav-link active admin" href="{% url 'dashboardaddcompetition' %}"><span
+                                class="fas fa-users"></span>&nbsp;Add
+                            Competition</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link admin" href="{% url 'dashboardaddcompetition' %}"><span
+                                class="fas fa-users"></span>&nbsp;Add
+                            Competition</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link admin" href="#"><span class="fas fa-comment"></span>&nbsp;Comments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin" href="/"><span class="fas fa-blog"></span>&nbsp;Live Website</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin" href="{% url 'logout' %}"><span
+                                class="fas fa-sign-out-alt"></span>&nbsp;Log Out</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-10">
+                {% if messages %}
+                {% for message in messages %}
+                {{message}}
+                {% endfor %}
+                {% endif %}
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

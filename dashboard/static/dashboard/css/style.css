@@ -1,0 +1,20 @@
+.col-sm-2{
+    background-color:darkslategray;
+}
+.col-sm-10{
+    background-color: white;
+}
+.col-sm-2 h1{
+    margin-top: 20px;
+    color: white;
+}
+.col-sm-10 h1{
+    margin-top: 20px;
+}
+.admin{
+    color:white;
+}
+.admin:hover{
+    background-color: white;
+    color:brown;
+}
